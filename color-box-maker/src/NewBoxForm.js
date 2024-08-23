@@ -13,6 +13,7 @@ const NewBoxForm = ({addBox}) => {
         console.log(formData)
         addBox({...formData})
         setFormData(INITIAL_STATE)
+        document.getElementById('width').focus();
     }   
 
     const handleChange = (e) => {
