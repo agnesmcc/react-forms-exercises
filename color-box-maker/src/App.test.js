@@ -1,8 +1,14 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+it('renders without crashing', () => {
+  const { getByText } = render(<App />);
+  const heading = getByText(/Box List/);
+  expect(heading).toBeInTheDocument();
+})
+
+it('matches the snapshot', () => {
+  const { asFragment } = render(<App />);
+  expect(asFragment()).toMatchSnapshot();
+}) 
+
